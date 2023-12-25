@@ -4,7 +4,7 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [react()],
-    base:'/YouTube_clone/',
+    base:'/',
     define: {
       __RAPID_API_KEY__: JSON.stringify(env.REACT_APP_RAPID_API_KEY),
       __RAPID_API_BASE_URL__:JSON.stringify(env.REACT_APP_RAPID_API_BASE_URL),
