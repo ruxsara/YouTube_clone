@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { Sidebar, Videos } from "./";
-import { fetchFromApi } from "./utils/fetchFromApi";
+import { fetchFromApi } from "../api/fetchFromApi";
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
 

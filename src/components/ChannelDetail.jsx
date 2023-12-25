@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { Videos, ChannelCard } from "./";
-import { fetchFromApi } from "./utils/fetchFromApi";
+import { fetchFromApi } from "../api/fetchFromApi";
 
 const ChannelDetail = () => {
   const [channelDetail, setChannelDetail] = useState();

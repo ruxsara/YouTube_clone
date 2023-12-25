@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { fetchFromApi } from "./utils/fetchFromApi";
+import { fetchFromApi } from "../api/fetchFromApi";
 import { Videos } from "./";
 const SearchFeed = () => {
   const [videos, setVideos] = useState(null);

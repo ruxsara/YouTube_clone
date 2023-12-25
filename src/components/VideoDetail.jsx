@@ -5,7 +5,7 @@ import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import { Videos, Loader } from "./";
-import { fetchFromApi } from "./utils/fetchFromApi";
+import { fetchFromApi } from "../api/fetchFromApi";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);

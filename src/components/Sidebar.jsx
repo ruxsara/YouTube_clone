@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack } from "@mui/material";
 
-import { categories } from "./utils/constants";
+import { categories } from "../utilities/constants";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
   <Stack

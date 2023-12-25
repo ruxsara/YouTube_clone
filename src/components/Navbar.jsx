@@ -1,10 +1,8 @@
 import React from "react";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
-import logoURL from '../assets/logo.png'
-import { BASE } from "./contains";
-
+ 
+ 
 const Navbar = () => {
   return (
     <Stack
@@ -18,12 +16,7 @@ const Navbar = () => {
         justifyContent: "space-between",
       }}
     >
-      <Link to={`/${BASE}`} style={{ display: 'flex', alignItems: 'center' }} >
-        <img src={logoURL} alt="logo" height={45} />
-
-      </Link>
-
-      <SearchBar />
+ 
     </Stack >
   );
 };
