@@ -6,7 +6,7 @@ import { BASE } from "./components/contains";
 
 const App = () => (
   <BrowserRouter>
-    <Box sx={{ backgroundColor: "#000" }}>
+    <Box sx={{ backgroundColor: "white" }}>
       <Navbar />
       <Routes>
         <Route exact path={`/${BASE}`} element={<Feed />} />

@@ -2,7 +2,7 @@ import React from "react";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import { logo } from './utils/constants'
+import logoURL from '../assets/logo.png'
 import { BASE } from "./contains";
 
 const Navbar = () => {
@@ -13,13 +13,13 @@ const Navbar = () => {
       p={2}
       sx={{
         position: "sticky",
-        background: "#000",
+        background: "white",
         top: 0,
         justifyContent: "space-between",
       }}
     >
       <Link to={`/${BASE}`} style={{ display: 'flex', alignItems: 'center' }} >
-        <img src={logo} alt="logo" height={45} />
+        <img src={logoURL} alt="logo" height={45} />
 
       </Link>
 

@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color:'black !important'
 }
 
 a {
@@ -11,14 +12,21 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 5px;
   height: 5px;
+  background-color: transparent;
+
 }
+::-webkit-scrollbar-thumb:hover {
+  background: #dbd9d9; }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgb(114, 113, 113);
   border-radius: 10px;
   height: 200px;
+  width: 5px;
+  background-color: transparent;
+
 }
 
 ::-webkit-scrollbar-track {
@@ -26,12 +34,12 @@ a {
 }
 
 .category-btn:hover {
-  background-color: #fc1503 !important;
+  background-color:#dbd9d9 !important;
   color: white !important;
 }
 
 .category-btn:hover span {
-  color: white !important;
+  color: black !important;
 }
 
 .react-player {
@@ -86,5 +94,9 @@ a {
     width: 200px;
   }
 
-}
+} 
 
+#logo{
+    width: 140px;
+    padding:5px;
+ }
