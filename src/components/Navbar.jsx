@@ -2,7 +2,8 @@ import React from "react";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import {logo} from './utils/constants'
+import { logo } from './utils/constants'
+import { BASE } from "./contains";
 
 const Navbar = () => {
   return (
@@ -17,12 +18,13 @@ const Navbar = () => {
         justifyContent: "space-between",
       }}
     >
-      <Link to="/" style={{display:'flex',alignItems:'center'}} >
-        <img src={logo} alt="logo" height={45}/>
+      <Link to={`/${BASE}`} style={{ display: 'flex', alignItems: 'center' }} >
+        <img src={logo} alt="logo" height={45} />
+
       </Link>
 
-      <SearchBar/>
-    </Stack>
+      <SearchBar />
+    </Stack >
   );
 };
 
