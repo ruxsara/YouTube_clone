@@ -9,3 +9,4 @@ export { default as Videos } from "./videos/list/Videos";
 export { default as VideoCard } from "./VideoCard";
 export { default as ChannelCard } from "./ChannelCard";
 export { default as Loader } from "./loader/Loader";
+export { default as Pagination } from "./pagination/Pagination";

@@ -6,7 +6,7 @@ export const RAPID_API_HOST = __RAPID_API_HOST__;
 
 const options = {
   params: {
-    maxResults: 50,
+    maxResults: 6,
   },
   headers: {
     "X-RapidAPI-Key": RAPID_API_KEY,
@@ -18,3 +18,4 @@ export const getAllVideos = async (url) => {
 
   return data;
 };
+
