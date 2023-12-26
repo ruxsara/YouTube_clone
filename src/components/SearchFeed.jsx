@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Videos } from "../components";
-import { getAllVideos } from "../api/getVideos";
+import { getAllVideos } from "../api/GetVideos";
 
 const SearchFeed = () => {
   const [videos, setVideos] = useState(null);
