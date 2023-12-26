@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { Videos } from "./";
+import { Videos } from "../components";
 import { getAllVideos } from "../api/getVideos";
 
 const SearchFeed = () => {
