@@ -1,42 +1,33 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar";
+import { SearchBar } from "../../components";
 import logoURL from "../../assets/logo.png";
 import { BASE } from "../../utilities/constants";
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Header = () => {
   return (
-    <Grid
-      container
-      spacing={2}
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      style={{ border: "1px solid", height: "160px" }}
-    >
+    <Grid container row className="headerContainer" >
       <Grid
         item
-        xs={3}
-        md={2}
-        style={{ border: "1px solid" }}
+        xs={4}
+        sm={2}
         container
-        direction="row"
         justifyContent="left"
         alignItems="center"
       >
         {/* //LINK */}
         <Link to={`/${BASE}`} style={{ display: "flex", alignItems: "center" }}>
-          <img src={logoURL} alt="logo" height={45} />
+          <img id="logo" src={logoURL} alt="logo" />
         </Link>
       </Grid>
       <Grid
         item
-        xs={6}
-        md={8}
-        style={{ border: "1px solid" }}
+        xs={4}
+        sm={8}
         container
-        direction="row"
         justifyContent="center"
         alignItems="center"
       >
@@ -45,15 +36,28 @@ const Header = () => {
       </Grid>
       <Grid
         item
-        xs={3}
-        md={2}
-        style={{ border: "1px solid" }}
+        xs={4}
+        sm={2}
         container
-        direction="row"
         justifyContent="right"
         alignItems="center"
       >
-        <div>RIGHT</div>
+        {/* //SEARCHBAR */}
+
+        <Grid sx={{ mr: "20px" }}  >
+          <Link>
+            <NotificationsNoneIcon />
+          </Link>
+        </Grid>
+
+
+        <Grid sx={{ mr: "20px" }} >
+          <Link>
+            <AccountCircleIcon style={{ fontSize: "35px" }} />
+          </Link>
+        </Grid>
+
+
       </Grid>
     </Grid>
   );

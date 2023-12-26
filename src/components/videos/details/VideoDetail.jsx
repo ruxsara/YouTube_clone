@@ -3,21 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
-import { Videos, Loader } from "./";
-import { fetchFromApi } from "../api/fetchFromApi";
-
+import { Videos, Loader } from "../../../components";
+import { getAllVideos } from "../../../api/getVideos";
+ 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
+    getAllVideos(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setVideoDetail(data.items[0])
     );
 
-    fetchFromApi(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
+    getAllVideos(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
       (data) => setVideos(data.items)
     );
   }, [id]);

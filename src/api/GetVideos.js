@@ -13,7 +13,7 @@ const options = {
     "X-RapidAPI-Host": RAPID_API_HOST,
   },
 };
-export const fetchFromApi = async (url) => {
+export const getAllVideos = async (url) => {
   const { data } = await axios.get(`${BASE_URL}/${url}`, options);
 
   return data;

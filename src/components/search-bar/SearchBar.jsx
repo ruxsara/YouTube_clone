@@ -9,28 +9,29 @@ const SearchBar = () => {
 
   const onhandleSubmit = (e) => {
     e.preventDefault();
-
     if (searchTerm) {
       navigate(`/search/${searchTerm}`);
-
       setSearchTerm("");
     }
   };
 
   return (
     <Paper
-    
       component="form"
       onSubmit={onhandleSubmit}
+      style={{
+        border: "1px solid #e3e3e3",
+        display: "flex",
+        justifyContent:"space-between"
+      }}
+
       sx={{
         borderRadius: 20,
         border: "1px solid #e3e3e3",
         pl: 2,
         boxShadow: "none",
         mr: { sm: 5 },
-        width:"100%"
-
-       
+        width: "100%"
       }}
     >
       <input
@@ -41,7 +42,7 @@ const SearchBar = () => {
       />
       <IconButton
         type="submit"
-        sx={{ p: "10px", color: "gray" ,  }}
+        sx={{ p: "10px", color: "gray", }}
         aria-label="search"
       >
         <SearchIcon />
