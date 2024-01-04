@@ -7,6 +7,7 @@ const App = () => (
   <BrowserRouter>
 
     <Box>
+      
       <Header/>
        <Routes>
         <Route exact path={`/${BASE}`} element={<Feed />} />
