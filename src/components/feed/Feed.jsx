@@ -15,8 +15,7 @@ const Feed = () => {
   }, [selectedCategory]);
 
   const getMore = () => {
-    const url = `search?part=snippet&q=${selectedCategory}`;
-    fetchData(url, setIsLoading, setVideos, setNextPageToken, nextPageToken);
+    fetchData(selectedCategory, setIsLoading, setVideos, setNextPageToken, nextPageToken);
   };
 
   return (

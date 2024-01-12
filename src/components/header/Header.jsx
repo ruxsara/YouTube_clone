@@ -9,7 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Header = () => {
   return (
-    <Grid container row className="headerContainer" >
+    <Grid container  className="headerContainer" >
       <Grid
         item
         xs={4}

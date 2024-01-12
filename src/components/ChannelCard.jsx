@@ -56,6 +56,7 @@ const ChannelCard = ({ channelDetail }) => {
                 channelDetail?.statistics?.subscriberCount
               ).toLocaleString()}{" "}
               Subscribers
+              
             </Typography>
           )}
         </CardContent>

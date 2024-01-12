@@ -8,33 +8,57 @@ import {
   demoVideoUrl,
   demoVideoTitle,
   demoChannelUrl,
-  demoChannelTitle,
-} from "../utilities/constants";
+  demoChannelTitle
+} from "../../utilities/constants"
 
-const VideoCard = ({
+const RelatedVideoCard = ({
   video: {
     id: { videoId },
-    snippet,
-  },
+    snippet
+  }
 }) => (
   <Card
-    sx={{
-      width: { xs: "100%", sm: "358px", md: "320px" },
+    style={{
       boxShadow: "none",
       borderRadius: 0,
+      display: "flex",
+      flexDirection: "row",
+      padding:2,
+      
+      
     }}
+
   >
-    <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}>
+    <Link
+      style={{ width: "45%" }}
+
+      to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}
+      md={6}
+sx={4}
+    >
       <CardMedia
         image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
         alt={snippet?.title}
-        sx={{ width: { xs: "100%", sm: "358px" }, height: 180 }}
-        style={{borderRadius: 12 }}
+        style={{ height: 95, borderRadius: 12 }}
       />
     </Link>
-    <CardContent sx={{ backgroundColor: "white", height: "106px" }}>
+
+    <CardContent
+      style={{
+        backgroundColor: "white",
+        height: "98px",
+        width: "55%",
+        display: "flex",
+        flexDirection: "column",
+        paddingTop:0,
+        paddingBottom:0
+      }}
+      md={6}
+      sx={8}
+      
+    >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-        <Typography  variant="subtitle1" fontWeight="bold" color="#272424da">
+        <Typography variant="subtitle1" fontWeight="" color="#272424da">
           {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
         </Typography>
       </Link>
@@ -46,7 +70,7 @@ const VideoCard = ({
         <Typography variant="subtitle2" color="gray">
           {snippet?.channelTitle || demoChannelTitle}
           <CheckCircleIcon
-            sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", ml: "5px" }}
           />
         </Typography>
       </Link>
@@ -54,4 +78,4 @@ const VideoCard = ({
   </Card>
 );
 
-export default VideoCard;
+export default RelatedVideoCard;

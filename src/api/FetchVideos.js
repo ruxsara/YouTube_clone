@@ -1,39 +1,34 @@
 import axios from "axios";
 
-export const BASE_URL = __RAPID_API_BASE_URL__;
-export const RAPID_API_KEY = __RAPID_API_KEY__;
-export const RAPID_API_HOST = __RAPID_API_HOST__;
-
-const options = {
-  params: {
-    maxResults: 6,
-    pageToken: "",
-  },
-  headers: {
-    "X-RapidAPI-Key": RAPID_API_KEY,
-    "X-RapidAPI-Host": RAPID_API_HOST,
-  },
-};
-
 export const fetchData = async (
-  apiURL,
+  selectedCategory,
   setIsLoading,
   setItems,
   setNextPageToken,
-  pageToken
+  nextPageToken
 ) => {
-  setIsLoading(true);
 
   try {
-    options.params.pageToken = pageToken;
+    setIsLoading(true);
 
-    const response = await axios.get(`${BASE_URL}/${apiURL}`, options);
+    const options = {
+      params: {
+        maxResults: 6,
+        pageToken: nextPageToken //  first page
+      },
+      headers: {
+        "X-RapidAPI-Key": RAPID_API_KEY,
+        "X-RapidAPI-Host": RAPID_API_HOST
+      }
+    };
 
-    const { items, nextPageToken } = response.data;
+    const url = `search?part=snippet&q=${selectedCategory}`;
 
-    setItems((prevItems) => [...prevItems, ...items]);
+    const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
 
-    setNextPageToken(nextPageToken);
+    setItems(prevItems => [...prevItems, ...response.data.items]);
+
+    setNextPageToken(response.data.nextPageToken);
   } catch (error) {
     console.log(error);
   } finally {
