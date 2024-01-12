@@ -112,3 +112,8 @@ a {
   border: 1px solid;
   height: 100px; color :#272424da
 }
+
+
+.MuiTypography-root {
+  color:black
+}

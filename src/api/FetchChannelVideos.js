@@ -1,33 +1,31 @@
 import axios from "axios";
 
-export const fetchRelatedVideos = async (
-  id,
+export const fetchChannelVideos = async (
+  channelId,
   setIsLoading,
-  setItems,
+  setVideos,
   setNextPageToken,
   nextPageToken // state
 ) => {
-
-
   try {
     setIsLoading(true);
 
     const options = {
-      params: { 
-        maxResults: 20,
-        pageToken: nextPageToken, 
+      params: {
+        maxResults: 6,
+        pageToken: nextPageToken
       },
-      headers: { 
+      headers: {
         "X-RapidAPI-Key": RAPID_API_KEY,
-        "X-RapidAPI-Host": RAPID_API_HOST,
-      },
+        "X-RapidAPI-Host": RAPID_API_HOST
+      }
     };
 
-    const url = `search?part=snippet&relatedToVideoId=${id}&type=video`
+    const url = `search?channelId=${channelId}&part=snippet%2Cid&order=date`;
 
     const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
 
-    setItems((prevItems) => [...prevItems, ...response.data.items]);
+    setVideos((prevItems) => [...prevItems, ...response.data.items]);
 
     setNextPageToken(response.data.nextPageToken);
   } catch (error) {
