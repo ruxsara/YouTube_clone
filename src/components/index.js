@@ -13,3 +13,4 @@ export { default as Pagination } from "./pagination/Pagination";
 export { default as VideoPlayer} from "./video-player/VideoPlayer";
 export { default as RelatedVideos} from "./related-videos/RelatedVideos";
 export { default as RelatedVideoCard} from "./related-video-card/RelatedVideoCard";
+export {default as VideoPlayerActions} from  "./video-player-actions/VideoPlayerActions"
