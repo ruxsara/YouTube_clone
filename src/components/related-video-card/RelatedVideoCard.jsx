@@ -34,7 +34,7 @@ const RelatedVideoCard = ({
 
       to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}
       md={6}
-sx={4}
+xs={4}
     >
       <CardMedia
         image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
@@ -54,7 +54,7 @@ sx={4}
         paddingBottom:0
       }}
       md={6}
-      sx={8}
+      xs={8}
       
     >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>

@@ -16,8 +16,5 @@ export const fetchChannelById = async (channelId, setChannelDetail) => {
   const { data } = await axios.get(`${BASE_URL}/${url}`, options);
 
   setChannelDetail(data.items[0]);
-
-  console.log(data.items[0])
-
   return data;
 };

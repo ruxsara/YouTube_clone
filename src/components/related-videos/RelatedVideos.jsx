@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Box, Pagination } from "@mui/material";
-
 import { ChannelCard, RelatedVideoCard } from "../../components";
 import { fetchRelatedVideos } from "../../api/FetchRelatedVideos";
 import { useParams } from "react-router-dom";

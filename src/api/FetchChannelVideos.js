@@ -5,7 +5,7 @@ export const fetchChannelVideos = async (
   setIsLoading,
   setVideos,
   setNextPageToken,
-  nextPageToken // state
+  nextPageToken
 ) => {
   try {
     setIsLoading(true);

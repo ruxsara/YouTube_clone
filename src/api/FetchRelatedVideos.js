@@ -5,7 +5,7 @@ export const fetchRelatedVideos = async (
   setIsLoading,
   setItems,
   setNextPageToken,
-  nextPageToken // state
+  nextPageToken 
 ) => {
 
 

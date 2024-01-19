@@ -4,10 +4,12 @@ import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { fetchVideoById } from "../../api/FetchVideoById";
 import VideoPlayerActions from "../video-player-actions/VideoPlayerActions";
+import Description from "../description/Description";
+import Comments from "../comments/Comments";
 
 const VideoPlayer = () => {
   const initialValue = {
-    snippet: { title: "", channelId: "", channelTitle: "" },
+    snippet: { title: "", channelId: "", channelTitle: "",description:"",tags:[], publishedAt:""},
     statistics: { viewCount: 0, likeCount: 0 }
   };
 
@@ -22,7 +24,7 @@ const VideoPlayer = () => {
   const {  snippet: { title},} = videoDetail;
 
   return (
-    <Box flex={1}>
+    <Box flex={1} pl={5}>
       <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${id}`}
@@ -35,6 +37,9 @@ const VideoPlayer = () => {
         </Typography>
 
         <VideoPlayerActions videoDetail={videoDetail} />
+        <Description videoDetail={videoDetail}/>
+        <Comments />
+
       </Box>
     </Box>
   );

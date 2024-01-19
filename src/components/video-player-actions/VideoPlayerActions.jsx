@@ -12,7 +12,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
     snippet: { title, channelId, channelTitle, thumbnails },
     statistics: { viewCount, likeCount }
   } = videoDetail;
-  console.log(thumbnails);
+
   return (
     <Grid
       container
@@ -33,8 +33,8 @@ const VideoPlayerActions = ({ videoDetail }) => {
             alt={title}
             sx={{
               borderRadius: "50%",
-              height: "50px",
-              width: "50px",
+              height: "40px",
+              width: "40px",
               border: "1px solid #e3e3e3"
             }}
           />
@@ -75,7 +75,8 @@ const VideoPlayerActions = ({ videoDetail }) => {
         container
         sx={{ justifyContent: { lg: "flex-end", xs: "flex-start" } }}
       >
-        <Grid item sx={{ mr: 1 }}>
+        <Grid item sx={{ mr: 1 }} >
+
           <Fab variant="extended" sx={{height:40}}>
             <ThumbUpOutlinedIcon sx={{ mr: 1, fontSize: "25px" }} />
             <Typography color="gray" sx={{ fontSize: 12, mr: 1 }}>
