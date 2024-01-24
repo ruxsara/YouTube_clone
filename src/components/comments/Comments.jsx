@@ -137,13 +137,13 @@ const Comments = () => {
 
   return (
     <>
-      <InfiniteScroll
+      {/* <InfiniteScroll
         dataLength={items.length}
         next={getMore}
         hasMore={true}
         loader={<Pagination />}
         scrollableTarget="parentScrollCommentsDiv"
-      >
+      > */}
         <Grid container>
           <Grid container sx={{ pt: 3 }}>
             <Grid>
@@ -162,12 +162,12 @@ const Comments = () => {
               </Link>
             </Grid>
 
-            <Grid>
+            <Grid >
               <TextField
                 id="standard-basic"
                 label="Add a comment..."
                 variant="standard"
-                sx={{ width: "600px" }}
+                sx={{ width: "800px",ml:3 }}
               />
             </Grid>
           </Grid>
@@ -297,7 +297,7 @@ const Comments = () => {
               )
           )}
         </Grid>
-      </InfiniteScroll>
+      {/* </InfiniteScroll> */}
     </>
   );
 };

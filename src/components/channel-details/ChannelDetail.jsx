@@ -39,15 +39,15 @@ const ChannelDetail = () => {
       <Box p={2} display="flex">
       <Box sx={{ mr: { sm: '100px' } }}/>
 
-      <InfiniteScroll
+      {/* <InfiniteScroll
           dataLength={videos.length}
           next={getMore}
           hasMore={true}
           loader={<Pagination />}
           scrollableTarget="parentScrollDiv"
-        >
+        > */}
           <Videos videos={videos} />
-        </InfiniteScroll>
+        {/* </InfiniteScroll> */}
       </Box>
     </Box>
   );

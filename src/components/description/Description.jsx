@@ -1,13 +1,24 @@
 import { Fab, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 import { formatDate } from "../../utilities/formatDate";
 
 const Description = ({ videoDetail }) => {
+  const [isFull, setisFull] = useState(false);
+
   const {
     snippet: { description, tags, publishedAt },
     statistics: { viewCount },
   } = videoDetail;
+
+  const getDescription = () => {
+    const lines = description.split(".");
+    if (isFull) {
+      return lines;
+    } else {
+      return lines.slice(0, 2);
+    }
+  };
 
   return (
     <Grid
@@ -29,7 +40,6 @@ const Description = ({ videoDetail }) => {
         variant="span"
         sx={{ fontSize: 17, mr: 2, fontWeight: "bold" }}
       >
-        {" "}
         {formatDate(publishedAt)}{" "}
       </Typography>
 
@@ -44,9 +54,17 @@ const Description = ({ videoDetail }) => {
       </Typography>
 
       <Typography color="black" sx={{ fontSize: 17 }}>
-        {description.split(".").map((line, key) => {
+        {getDescription().map((line, key) => {
           return <p key={key}> {line}</p>;
         })}
+      </Typography>
+
+      <Typography
+        onClick={() => {
+          setisFull(!isFull);
+        }}
+      >
+        Show {isFull ? "less" : "more"}
       </Typography>
     </Grid>
   );

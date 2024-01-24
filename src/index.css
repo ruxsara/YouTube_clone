@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: 'black !important'
+  color: "black !important";
 }
 
 a {
@@ -15,7 +15,6 @@ a {
   width: 5px;
   height: 5px;
   background-color: transparent;
-
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -28,7 +27,6 @@ a {
   height: 200px;
   width: 5px;
   background-color: transparent;
-
 }
 
 ::-webkit-scrollbar-track {
@@ -96,7 +94,6 @@ a {
   .search-bar {
     width: 200px;
   }
-
 }
 
 #logo {
@@ -104,15 +101,32 @@ a {
   padding: 3px;
 }
 
-
 .headerContainer {
   margin: 2px;
   justify-content: space-between;
   align-items: center;
-  height: 100px; color :#272424da
+  height: 100px;
+  color: #272424da;
 }
-
 
 .MuiTypography-root {
-  color:black
+  color: black;
 }
+
+.action-icon {
+  margin-right: 1;
+  font-size: 25px;
+  color: black;
+}
+
+.dislike-video-button {
+  border-top-right-radius: 20;
+  border-bottom-right-radius: 20;
+  border-left: 1px solid gray;
+}
+
+.like-video-button {
+  border-top-left-radius: 20;
+  border-bottom-left-radius: 20,
+}
+
