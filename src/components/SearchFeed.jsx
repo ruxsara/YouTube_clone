@@ -1,5 +1,3 @@
-// copy Feed.jsx and paste here
-
 import { useState, useEffect } from "react";
 import { Typography, Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
@@ -17,7 +15,6 @@ const SearchFeed = () => {
   }, [searchTerm]);
 
   return (
-
     <Grid
       container
       direction="column"

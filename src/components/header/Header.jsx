@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import { SearchBar } from "../../components";
 import logoURL from "../../assets/logo.png";
 import { BASE } from "../../utilities/constants";
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import VideoCallIcon from "@mui/icons-material/VideoCall";
 
 const Header = () => {
   return (
-    <Grid container  className="headerContainer" >
+    <Grid container className="headerContainer">
       <Grid
         item
         xs={4}
@@ -44,20 +45,23 @@ const Header = () => {
       >
         {/* //SEARCHBAR */}
 
-        <Grid sx={{ mr: "20px" }}  >
+        <Grid sx={{ mr: "20px" }}>
+          <Link>
+            <VideoCallIcon />
+          </Link>
+        </Grid>
+
+        <Grid sx={{ mr: "20px" }}>
           <Link>
             <NotificationsNoneIcon />
           </Link>
         </Grid>
 
-
-        <Grid sx={{ mr: "20px" }} >
+        <Grid sx={{ mr: "20px" }}>
           <Link>
             <AccountCircleIcon style={{ fontSize: "35px" }} />
           </Link>
         </Grid>
-
-
       </Grid>
     </Grid>
   );

@@ -9,10 +9,14 @@ import { Link } from "react-router-dom";
 import ButtonGroup from "@mui/material-next/ButtonGroup";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import "../../index.css";
+import { formatText } from "../../utilities/formatText";
+import { formatCount } from "../../utilities/formatCount";
 
-const WHITE= 'white'
-const BLACK= 'black'
+
+const WHITE = "white";
+const BLACK = "black";
 
 const VideoPlayerActions = ({ videoDetail }) => {
   const {
@@ -33,6 +37,8 @@ const VideoPlayerActions = ({ videoDetail }) => {
         justifyContent="flex-start"
         sx={{ alignItems: "center" }}
       >
+        {/* //image */}
+
         <Grid item sx={{ mr: 1 }}>
           <Link to={`/channel/${channelId}`}>
             <CardMedia
@@ -47,11 +53,12 @@ const VideoPlayerActions = ({ videoDetail }) => {
             />
           </Link>
         </Grid>
+        {/* // title */}
 
         <Grid item sx={{ mr: 2 }}>
           <Link to={`/channel/${channelId}`}>
             <Typography color="black" fontWeight="bold" sx={{ fontSize: 15 }}>
-              {channelTitle}
+              {formatText(channelTitle, 10)}
             </Typography>
           </Link>
 
@@ -60,6 +67,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
           </Typography>
         </Grid>
 
+        {/* //subscribers */}
         <Grid item sx={{ mr: 6 }}>
           <Button
             variant="contained"
@@ -77,6 +85,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
             Subscribe
           </Button>
         </Grid>
+
       </Grid>
       <Grid
         item
@@ -89,47 +98,46 @@ const VideoPlayerActions = ({ videoDetail }) => {
           <ButtonGroup
             color="black"
             variant="outlined"
-            sx={{ bgcolor: "rgb(240, 240, 240)", p: 0.5 }}
+            sx={{ bgcolor: " #e0e0e0", p: 0.5 }}
           >
             <Button
               className="like-video-button"
               onClick={() => {
                 if (isLiked === WHITE) {
-                  setIsDisLiked(WHITE); 
+                  setIsDisLiked(WHITE);
                 }
 
-                setIsLiked(isLiked=== BLACK ? WHITE : BLACK);
+                setIsLiked(isLiked === BLACK ? WHITE : BLACK);
               }}
             >
-              {isLiked === BLACK? (
+              {isLiked === BLACK ? (
                 <ThumbUpIcon className="action-icon" />
               ) : (
                 <ThumbUpOutlinedIcon className="action-icon" />
               )}
 
               <Typography color="gray" sx={{ fontSize: 12, ml: 1 }}>
-                {parseInt(likeCount).toLocaleString()}
+                {formatCount(viewCount)}
               </Typography>
             </Button>
             <Button
               className="dislike-video-button"
-              onClick={() => {
-                setIsDisLiked(isDisLiked===BLACK ? WHITE : BLACK);
 
-                if(isDisLiked===WHITE){
-                  setIsLiked(WHITE)
+              onClick={() => {
+                setIsDisLiked(isDisLiked === BLACK ? WHITE : BLACK);
+
+                if (isDisLiked === WHITE) {
+                  setIsLiked(WHITE);
                 }
               }}
             >
-              {isDisLiked ===BLACK ? (
+              {isDisLiked === BLACK ? (
                 <ThumbDownAltIcon className="action-icon" />
               ) : (
                 <ThumbDownOutlinedIcon className="action-icon" />
               )}
             </Button>
           </ButtonGroup>
-
-          
         </Grid>
 
         <Grid item sx={{ mr: 1 }}>
@@ -137,6 +145,15 @@ const VideoPlayerActions = ({ videoDetail }) => {
             <ReplyOutlinedIcon sx={{ mr: 1, fontSize: "25px" }} />
             <Typography color="gray" sx={{ fontSize: 12, mr: 1 }}>
               Share
+            </Typography>
+          </Fab>
+        </Grid>
+
+        <Grid item sx={{ mr: 1 }}>
+          <Fab variant="extended" sx={{ height: 40 }}>
+            <PlaylistAddIcon sx={{ mr: 1, fontSize: "25px" }} />
+            <Typography color="gray" sx={{ fontSize: 12, mr: 1 }}>
+              Save
             </Typography>
           </Fab>
         </Grid>

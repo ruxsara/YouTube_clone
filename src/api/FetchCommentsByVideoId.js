@@ -7,11 +7,13 @@ export const fetchCommentsByVideoId = async (
   setItems,
   setNextPageToken,
   nextPageToken,
-  setCommentActions
+  setCommentActions,
+  setCommentsCount,
+  setCommentDisabled
 ) => {
   try {
     setIsLoading(true);
-
+    setCommentDisabled(false);
     const options = {
       params: {
         maxResults: "2",
@@ -30,11 +32,22 @@ export const fetchCommentsByVideoId = async (
     //Get Comment IDs
     const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
 
+    if (
+      response.data.error.code === 403 &&
+      response.data.error.errors[0].reason === "commentsDisabled"
+    ) {
+      setCommentDisabled(true);
+    }
+
     const comments = [];
     const commentActions = [];
 
+    const pageInfo = response?.data?.pageInfo;
+
+    const commentsCount = pageInfo?.resultsPerPage * pageInfo?.totalResults;
+
     for (let i = 0; i < 3; i++) {
-      const item = response.data.items[i];
+      const item = response?.data?.items[i];
 
       // Get CommentDetails
       const comment = await fetchCommentById(item.id);
@@ -49,11 +62,11 @@ export const fetchCommentsByVideoId = async (
 
       commentActions.push(action);
     }
-
+    setCommentsCount(commentsCount);
     setItems((prevItems) => [...prevItems, ...comments]);
     setCommentActions((prevActions) => [...prevActions, ...commentActions]);
 
-    setNextPageToken(response.data.nextPageToken);
+    setNextPageToken(response?.data?.nextPageToken);
   } catch (error) {
     console.log(error);
   } finally {

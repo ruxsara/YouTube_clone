@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { fetchVideoById } from "../../api/FetchVideoById";
-import VideoPlayerActions from "../video-player-actions/VideoPlayerActions";
-import Description from "../description/Description";
 import Comments from "../comments/Comments";
+import Description from "../description/Description";
+import VideoPlayerActions from "../video-player-actions/VideoPlayerActions";
 
 const VideoPlayer = () => {
   const initialValue = {
@@ -29,7 +29,8 @@ const VideoPlayer = () => {
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${id}`}
           className="react-player"
-          controls
+          controls 
+          playing
         />
 
         <Typography color="black" variant="h5" fontWeight="bold" p={2}>
@@ -38,7 +39,7 @@ const VideoPlayer = () => {
 
         <VideoPlayerActions videoDetail={videoDetail} />
         <Description videoDetail={videoDetail}/>
-        <Comments />
+        <Comments  />
 
       </Box>
     </Box>

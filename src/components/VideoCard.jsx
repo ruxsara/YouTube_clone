@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
+import { formatText } from "../utilities/formatText";
 import {
   demoThumbnailUrl,
   demoVideoUrl,
@@ -21,7 +21,7 @@ const VideoCard = ({
     sx={{
       width: { xs: "100%", sm: "358px", md: "320px" },
       boxShadow: "none",
-      borderRadius: 0,
+      // borderRadius: 0,
     }}
   >
     <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}>
@@ -29,13 +29,14 @@ const VideoCard = ({
         image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
         alt={snippet?.title}
         sx={{ width: { xs: "100%", sm: "358px" }, height: 180 }}
-        style={{borderRadius: 12 }}
+        // style={{borderRadius: 12 }}
       />
     </Link>
     <CardContent sx={{ backgroundColor: "white", height: "106px" }}>
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-        <Typography  variant="subtitle1" fontWeight="bold" color="#272424da">
-          {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+        <Typography variant="subtitle1" fontWeight="bold" color="#272424da">
+          {/* {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)} */}
+          {formatText(snippet?.title, 50)}
         </Typography>
       </Link>
       <Link
@@ -48,6 +49,10 @@ const VideoCard = ({
           <CheckCircleIcon
             sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
           />
+        </Typography>
+
+        <Typography variant="subtitle2" color="gray">
+          {snippet?.publishedAt}
         </Typography>
       </Link>
     </CardContent>

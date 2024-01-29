@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
-import { Pagination, Sidebar, Videos } from "..";
+import { useEffect, useState } from "react";
+import { Sidebar, Videos } from "..";
 import { fetchData } from "../../api/FetchVideos";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
@@ -15,7 +14,13 @@ const Feed = () => {
   }, [selectedCategory]);
 
   const getMore = () => {
-    fetchData(selectedCategory, setIsLoading, setVideos, setNextPageToken, nextPageToken);
+    fetchData(
+      selectedCategory,
+      setIsLoading,
+      setVideos,
+      setNextPageToken,
+      nextPageToken
+    );
   };
 
   return (
@@ -36,7 +41,7 @@ const Feed = () => {
           variant="body2"
           sx={{ mt: 1.5, color: "black" }}
         >
-          Copyright © 2022 JSM Media
+          Copyright © 2022
         </Typography>
       </Box>
       <Box
@@ -55,7 +60,7 @@ const Feed = () => {
           loader={<Pagination />}
           scrollableTarget="parentScrollDiv"
         > */}
-          <Videos videos={videos} />
+        <Videos videos={videos} />
         {/* </InfiniteScroll> */}
       </Box>
     </Stack>

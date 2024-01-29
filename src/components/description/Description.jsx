@@ -48,7 +48,7 @@ const Description = ({ videoDetail }) => {
         fontWeight="bold"
         sx={{ fontSize: 15, color: "#808080" }}
       >
-        {tags.map((tag, key) => (
+        {tags?.map((tag, key) => (
           <span key={key}> #{tag}</span>
         ))}
       </Typography>
@@ -60,6 +60,7 @@ const Description = ({ videoDetail }) => {
       </Typography>
 
       <Typography
+        sx={{ width: "100%", cursor: "pointer", fontWeight: "bold" }}
         onClick={() => {
           setisFull(!isFull);
         }}

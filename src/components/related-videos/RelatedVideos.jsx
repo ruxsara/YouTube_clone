@@ -28,7 +28,7 @@ const RelatedVideos = () => {
   return (
     <Box
       px={2}
-      py={{ md: 1, xs: 5 }}
+      py={{ md: 1, xs: 5 }}  
       justifyContent="center"
       alignItems="center"
     >
@@ -54,6 +54,7 @@ const RelatedVideos = () => {
             <Box key={idx}>
               {item.id.videoId && <RelatedVideoCard video={item} />}
               {item.id.channelId && <ChannelCard channelDetail={item} />}
+          
             </Box>
           ))}
         </InfiniteScroll>

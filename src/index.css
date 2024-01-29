@@ -93,8 +93,14 @@ a {
 
   .search-bar {
     width: 200px;
+    font-size: 17px;
   }
 }
+/* .search-bar:focus{
+  border: 1px solid blue;
+  border-radius: 20px 0 0 20px;
+ 
+} */
 
 #logo {
   height: 35px;
@@ -122,11 +128,16 @@ a {
 .dislike-video-button {
   border-top-right-radius: 20;
   border-bottom-right-radius: 20;
-  border-left: 1px solid gray;
+  border-left: 1px solid gray !important;
+  min-width: 50px !important;
 }
 
 .like-video-button {
   border-top-left-radius: 20;
-  border-bottom-left-radius: 20,
+  border-bottom-left-radius: 20;
 }
 
+.search-bar {
+  font-size: 17px;
+  margin-left: 10px;
+}
