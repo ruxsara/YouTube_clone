@@ -1,16 +1,14 @@
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import { CardMedia, Grid, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchCommentsByVideoId } from "../../api/FetchCommentsByVideoId";
-import { CardMedia, Grid, TextField, Typography } from "@mui/material";
+import CommentCount from "../../comment-count/CommentCount";
 import { demoThumbnailUrl } from "../../utilities/constants";
 import { formatDate } from "../../utilities/formatDate";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { Pagination } from "..";
-import CommentCount from "../../comment-count/CommentCount";
 
 const Comments = () => {
   const actionsInitialValue = [
@@ -137,8 +135,6 @@ const Comments = () => {
     setCommentActions(actions);
   };
 
-  //
-
   return (
     <>
       {!commentDisabled ? (
@@ -168,7 +164,6 @@ const Comments = () => {
                   />
                 </Link>
               </Grid>
-
               <Grid>
                 <TextField
                   id="standard-basic"

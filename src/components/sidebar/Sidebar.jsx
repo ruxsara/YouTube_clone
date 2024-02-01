@@ -6,8 +6,9 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
   <Stack
     direction="row"
     sx={{
+      
       overflowY: "auto",
-      height: { sx: "auto", md: "95%" },
+      height: '100%',
       flexDirection: { md: "column" },
     }}
   >

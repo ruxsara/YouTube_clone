@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Sidebar, Videos } from "..";
+import { Sidebar, TagsCarousel, Videos } from "..";
 import { fetchData } from "../../api/FetchVideos";
 
 const Feed = () => {
@@ -41,7 +41,7 @@ const Feed = () => {
           variant="body2"
           sx={{ mt: 1.5, color: "black" }}
         >
-          Copyright © 2022
+          © 2024 Google LLC{" "}
         </Typography>
       </Box>
       <Box
@@ -51,17 +51,26 @@ const Feed = () => {
           overflowY: "auto",
           height: "90vh",
           flex: 2,
+          width: "100%",
+          padding: 0,
+          margin: 0,
         }}
       >
-        {/* <InfiniteScroll
+        <Box sx={{ width: "100%", mb: 3 }}>
+          <TagsCarousel />
+        </Box>
+        <Box>
+          {/* <InfiniteScroll
           dataLength={videos.length}
           next={getMore}
           hasMore={true}
           loader={<Pagination />}
           scrollableTarget="parentScrollDiv"
         > */}
-        <Videos videos={videos} />
-        {/* </InfiniteScroll> */}
+
+          <Videos videos={videos} />
+          {/* </InfiniteScroll> */}
+        </Box>
       </Box>
     </Stack>
   );

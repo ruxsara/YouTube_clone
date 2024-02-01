@@ -1,33 +1,39 @@
-import { Grid } from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { SearchBar } from "../../components";
 import logoURL from "../../assets/logo.png";
+import { SearchBar, TagsCarousel } from "../../components";
 import { BASE } from "../../utilities/constants";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import VideoCallIcon from "@mui/icons-material/VideoCall";
+import DialogSign from "../dialog/Dialog";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = () => {
   return (
-    <Grid container className="headerContainer">
-      <Grid
-        item
-        xs={4}
-        sm={2}
-        container
-        justifyContent="left"
-        alignItems="center"
-      >
-        {/* //LINK */}
-        <Link to={`/${BASE}`} style={{ display: "flex", alignItems: "center" }}>
-          <img id="logo" src={logoURL} alt="logo" />
-        </Link>
+    <Grid
+      container
+      className="headerContainer"
+      sx={{ justifyContent: "space-betweend" }}
+    >
+      <Grid item display="flex" alignItems="center">
+        <span>
+          <MenuIcon />
+        </span>
+        <span item xs={4} sm={2} justifyContent="left" alignItems="center">
+          {/* //LINK */}
+          <Link
+            to={`/${BASE}`}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img id="logo" src={logoURL} alt="logo" />
+          </Link>
+        </span>
       </Grid>
+
       <Grid
         item
         xs={4}
-        sm={8}
+        sm={5}
         container
         justifyContent="center"
         alignItems="center"
@@ -45,21 +51,15 @@ const Header = () => {
       >
         {/* //SEARCHBAR */}
 
-        <Grid sx={{ mr: "20px" }}>
+        <Grid item sx={{ mr: "20px" }}>
           <Link>
-            <VideoCallIcon />
+            <MoreVertIcon />
           </Link>
         </Grid>
 
-        <Grid sx={{ mr: "20px" }}>
+        <Grid item sx={{ mr: "20px" }}>
           <Link>
-            <NotificationsNoneIcon />
-          </Link>
-        </Grid>
-
-        <Grid sx={{ mr: "20px" }}>
-          <Link>
-            <AccountCircleIcon style={{ fontSize: "35px" }} />
+            <DialogSign />
           </Link>
         </Grid>
       </Grid>

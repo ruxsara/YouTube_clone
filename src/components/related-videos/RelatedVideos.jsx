@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Box, Pagination } from "@mui/material";
 import { ChannelCard, RelatedVideoCard } from "../../components";
 import { fetchRelatedVideos } from "../../api/FetchRelatedVideos";
 import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Stack, Box, Pagination } from "@mui/material";
+
 
 const RelatedVideos = () => {
   const [items, setItems] = useState([]);
