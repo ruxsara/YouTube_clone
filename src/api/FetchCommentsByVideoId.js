@@ -1,8 +1,7 @@
 import axios from "axios";
-import { fetchCommentById } from "./FetchCommentById";
 
 export const fetchCommentsByVideoId = async (
-  id,
+  videoId,
   setIsLoading,
   setItems,
   setNextPageToken,
@@ -16,10 +15,8 @@ export const fetchCommentsByVideoId = async (
     setCommentDisabled(false);
     const options = {
       params: {
-        maxResults: "2",
-        pageToken: nextPageToken,
-        part: "snippet",
-        videoId: id,
+        token: nextPageToken,
+        id: videoId,
       },
       headers: {
         "X-RapidAPI-Key": RAPID_API_KEY,
@@ -27,46 +24,40 @@ export const fetchCommentsByVideoId = async (
       },
     };
 
-    const url = "commentThreads";
+    const url = "comments";
 
-    //Get Comment IDs
-    const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
+    const {data} = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);  // 
 
-    if (
-      response.data.error.code === 403 &&
-      response.data.error.errors[0].reason === "commentsDisabled"
-    ) {
-      setCommentDisabled(true);
-    }
+    // if (
+    //   response.data.error.code === 403 &&
+    //   response.data.error.errors[0].reason === "commentsDisabled"
+    // ) {
+    //   setCommentDisabled(true);
+    // }
 
-    const comments = [];
-    const commentActions = [];
+    const actions = [];
 
-    const pageInfo = response?.data?.pageInfo;
+    const commentsCount = data.commentsCount;
 
-    const commentsCount = pageInfo?.resultsPerPage * pageInfo?.totalResults;
+    const comments = data.data;
 
-    for (let i = 0; i < 3; i++) {
-      const item = response?.data?.items[i];
-
-      // Get CommentDetails
-      const comment = await fetchCommentById(item.id);
-
-      comments.push(comment);
-
+    comments.forEach((c) => {
       const action = {
         isLiked: false,
         isDisLiked: false,
-        commentId: comment.id,
+        commentId: c.commentId,
       };
 
-      commentActions.push(action);
-    }
-    setCommentsCount(commentsCount);
-    setItems((prevItems) => [...prevItems, ...comments]);
-    setCommentActions((prevActions) => [...prevActions, ...commentActions]);
+      actions.push(action);
+    });
 
-    setNextPageToken(response?.data?.nextPageToken);
+    setCommentsCount(commentsCount);
+    
+    setItems((prevItems) => [...prevItems, ...comments]);
+
+    setCommentActions((prevActions) => [...prevActions, ...actions]);
+
+    setNextPageToken(data?.continuation);
   } catch (error) {
     console.log(error);
   } finally {

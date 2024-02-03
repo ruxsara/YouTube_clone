@@ -13,22 +13,29 @@ export const fetchData = async (
 
     const options = {
       params: {
-        maxResults: 6,
-        pageToken: nextPageToken //  first page
+        token:nextPageToken,
+        query: 'cat',
+        geo: 'US',
+        lang: 'en',
+        type:'video'
       },
+
+
+ 
       headers: {
         "X-RapidAPI-Key": RAPID_API_KEY,
         "X-RapidAPI-Host": RAPID_API_HOST
       }
     };
 
-    const url = `search?part=snippet&q=${selectedCategory}`;
+    // const url = `search?part=snippet&q=${selectedCategory}`;
+    const url='search'
 
     const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
 
-    setItems(prevItems => [...prevItems, ...response.data.items]);
+    setItems(prevItems => [...prevItems, ...response.data.data]);
 
-    setNextPageToken(response.data.nextPageToken);
+    setNextPageToken(response.data.continuation);
   } catch (error) {
     console.log(error);
   } finally {

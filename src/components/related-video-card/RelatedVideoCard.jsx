@@ -11,13 +11,14 @@ import {
   demoVideoUrl
 } from "../../utilities/constants";
 
-const RelatedVideoCard = ({
-  video: {
+const RelatedVideoCard = ({video}) => {
+  
+  const  {
     id: { videoId },
     snippet,
-  },
-}) => (
-  <Card
+  }= video
+
+  return <Card
     style={{
       boxShadow: "none",
       // borderRadius: 0,
@@ -76,6 +77,6 @@ const RelatedVideoCard = ({
       </Link>
     </CardContent>
   </Card>
-);
+};
 
 export default RelatedVideoCard;

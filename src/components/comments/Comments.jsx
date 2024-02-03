@@ -21,42 +21,40 @@ const Comments = () => {
 
   const initialValue = [
     // {
-    //   id: "UgxFrRk2YdugwK5BYDR4AaABAg",
-    //   snippet: {
-    //     channelId: "",
-    //     textDisplay: "",
-    //     textOriginal: "",
-    //     authorDisplayName: "",
-    //     authorProfileImageUrl: "",
-    //     authorChannelUrl: "",
-    //     authorChannelId: {
-    //       value: "",
-    //     },
-    //     canRate: true,
-    //     viewerRating: "",
-    //     likeCount: 0,
-    //     publishedAt: "",
-    //     updatedAt: "",
-    //   },
+    //   commentId: "",
+    //   commentsCount: "",
+    //   continuation: "",
+    //   authorProfileImageUrl: [{url:''}],
+    //   authorDisplayName: "",
+    //   authorChannelId: "",
+    //   textDisplay: "",
+    //   publishedTimeText: "",
+    //   likesCount: "",
+    //   replyCount: "",
+    //   replyToken: "",
     // },
   ];
 
   const [items, setItems] = useState(initialValue);
   const [isLoading, setIsLoading] = useState(false);
   const [nextPageToken, setNextPageToken] = useState("");
-  const { id } = useParams();
+  const { id: videoId } = useParams();
   const [commentActions, setCommentActions] = useState(actionsInitialValue);
   const [commentsCount, setCommentsCount] = useState(0);
   const [commentDisabled, setCommentDisabled] = useState(false);
 
   const getValue = (commentId) => {
-    const action = commentActions.find((item) => item.commentId == commentId);
+    const action = commentActions.find(
+      (action) => action.commentId == commentId
+    );
+    console.log({ commentId, action });
+
     return action;
   };
 
   const getMore = () => {
     fetchCommentsByVideoId(
-      id,
+      videoId,
       setIsLoading,
       setItems,
       setNextPageToken,
@@ -72,14 +70,24 @@ const Comments = () => {
   }, []);
 
   const doLikeAction = (commentId, color) => {
+
+
     const comments = items.map((item) => {
-      if (item.id === commentId) {
-        const currentValue = item.snippet.likeCount;
+      if (item.commentId === commentId) {
+        const currentValue = item.likesCount;
+
+        if (
+          currentValue.includes("K") ||
+          currentValue.includes("M") ||
+          currentValue.includes("B")
+        ) {
+          return item;
+        }
 
         if (color == "black") {
-          item.snippet.likeCount = currentValue - 1;
+          item.likesCount = (parseInt(currentValue) - 1).toString();
         } else {
-          item.snippet.likeCount = currentValue + 1;
+          item.likesCount = (parseInt(currentValue) + 1).toString();
         }
       }
       return item;
@@ -105,13 +113,23 @@ const Comments = () => {
 
   const doDisLikeAction = (commentId, color) => {
     const comments = items.map((item) => {
-      if (item.id === commentId) {
-        const currentValue = item.snippet.likeCount;
+      if(item.commentId === commentId) {
+        const currentValue = item.likesCount;
 
-        const action = commentActions.find((act) => act.commentId === item.id);
+        const action = commentActions.find(
+          (act) => act.commentId === item.commentId
+        );
 
-        if (color == "white" && action.isLiked === true) {
-          item.snippet.likeCount = currentValue - 1;
+        if(
+          currentValue.includes("K") ||
+          currentValue.includes("M") ||
+          currentValue.includes("B")
+        ) {
+          return item;
+        }
+
+        if(color == "white" && action.isLiked === true) {
+          item.likesCount = (parseInt(currentValue) - 1).toString();
         }
       }
       return item;
@@ -152,7 +170,7 @@ const Comments = () => {
               <Grid>
                 <Link
                   style={{ width: "45%", marginRight: "15px" }}
-                  to={id ? `/video/${id}` : `/video/cV2gBU6hKfY`}
+                  to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}
                 >
                   <CardMedia
                     image={demoThumbnailUrl}
@@ -175,10 +193,10 @@ const Comments = () => {
             </Grid>
 
             {items.map(
-              (item) =>
-                item.id && (
+              (item, index) =>
+                item.commentId && (
                   <Grid
-                    key={item.id}
+                    key={index}
                     container
                     sx={{
                       flexDirection: "row",
@@ -190,14 +208,15 @@ const Comments = () => {
                       <Grid id="profileContainer">
                         <Link
                           style={{ width: "45%", marginRight: "50px" }}
-                          to={id ? `/video/${id}` : `/video/cV2gBU6hKfY`}
+                          to={
+                            videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`
+                          }
                         >
                           <CardMedia
                             image={
-                              item?.snippet?.authorProfileImageUrl ||
+                              item.authorProfileImageUrl[0].url ||
                               demoThumbnailUrl
                             }
-                            alt={item?.snippet?.title}
                             style={{
                               width: 40,
                               height: 40,
@@ -223,7 +242,7 @@ const Comments = () => {
                               fontWeight: "bold",
                             }}
                           >
-                            {item?.snippet?.authorDisplayName}
+                            {item.authorDisplayName}
                           </Typography>
 
                           <Typography
@@ -234,7 +253,7 @@ const Comments = () => {
                               color: "#808080",
                             }}
                           >
-                            {formatDate(item?.snippet?.publishedAt)}
+                            {item.publishedTimeText}
                           </Typography>
                         </Grid>
 
@@ -246,24 +265,24 @@ const Comments = () => {
                               mr: 2,
                             }}
                           >
-                            {item?.snippet?.textDisplay}
+                            {item.textDisplay}
                           </Typography>
                         </Grid>
 
                         <Grid container sx={{ flexDirection: "row", pt: 1 }}>
                           <Grid>
-                            {getValue(item.id)?.isLiked ? (
+                            {getValue(item.commentId)?.isLiked ? (
                               <ThumbUpIcon
                                 sx={{ fontSize: "15px", mr: 1 }}
                                 onClick={() => {
-                                  doLikeAction(item.id, "black");
+                                  doLikeAction(item.commentId, "black");
                                 }}
                               />
                             ) : (
                               <ThumbUpOutlinedIcon
                                 sx={{ fontSize: "15px", mr: 1 }}
                                 onClick={() => {
-                                  doLikeAction(item.id, "white");
+                                  doLikeAction(item.commentId, "white");
                                 }}
                               />
                             )}
@@ -272,22 +291,22 @@ const Comments = () => {
                             variant="span"
                             sx={{ fontSize: 12, mr: 2 }}
                           >
-                            {item?.snippet?.likeCount}
+                            {item.likesCount}
                           </Typography>
 
                           <Grid>
-                            {getValue(item.id)?.isDisLiked ? (
+                            {getValue(item.commentId)?.isDisLiked ? (
                               <ThumbDownAltIcon
                                 sx={{ fontSize: "15px", mr: 3 }}
                                 onClick={() => {
-                                  doDisLikeAction(item.id, "black");
+                                  doDisLikeAction(item.commentId, "black");
                                 }}
                               />
                             ) : (
                               <ThumbDownOffAltIcon
                                 sx={{ fontSize: "15px", mr: 3 }}
                                 onClick={() => {
-                                  doDisLikeAction(item.id, "white");
+                                  doDisLikeAction(item.commentId, "white");
                                 }}
                               />
                             )}

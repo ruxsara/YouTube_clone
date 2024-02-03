@@ -19,9 +19,23 @@ const WHITE = "white";
 const BLACK = "black";
 
 const VideoPlayerActions = ({ videoDetail }) => {
-  const {
-    snippet: { title, channelId, channelTitle, thumbnails },
-    statistics: { viewCount, likeCount },
+  const { id,
+  title,
+  lengthSeconds,
+  channelTitle,
+  channelId,
+  Description,
+  allowRatings ,
+  viewCount,
+  isPrivate ,
+  isUnpluggedCorpus,
+  isLiveContent,
+  isFamilySaf,
+  isUnlisted,
+  category,
+  publishDate,
+  uploadDate,
+  thumbnail
   } = videoDetail;
 
   const [isLiked, setIsLiked] = useState(WHITE);
@@ -42,7 +56,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
         <Grid item sx={{ mr: 1 }}>
           <Link to={`/channel/${channelId}`}>
             <CardMedia
-              image={thumbnails?.default?.url || demoProfilePicture}
+              image={thumbnail[0]?.url || demoProfilePicture}
               alt={title}
               sx={{
                 borderRadius: "50%",
@@ -63,7 +77,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
           </Link>
 
           <Typography color="gray" sx={{ fontSize: 12 }}>
-            {parseInt(likeCount).toLocaleString()} subscribers
+            {formatCount(viewCount)} subscribers
           </Typography>
         </Grid>
 

@@ -5,10 +5,25 @@ import { formatDate } from "../../utilities/formatDate";
 
 const Description = ({ videoDetail }) => {
   const [isFull, setisFull] = useState(false);
-
   const {
-    snippet: { description, tags, publishedAt },
-    statistics: { viewCount },
+    id,
+    title,
+    lengthSeconds,
+    channelTitle,
+    channelId,
+    description,
+    allowRatings ,
+    viewCount,
+    isPrivate ,
+    isUnpluggedCorpus,
+    isLiveContent,
+    isFamilySaf,
+    isUnlisted,
+    category,
+    publishDate,
+    uploadDate,
+    thumbnail,
+    keywords
   } = videoDetail;
 
   const getDescription = () => {
@@ -40,7 +55,7 @@ const Description = ({ videoDetail }) => {
         variant="span"
         sx={{ fontSize: 17, mr: 2, fontWeight: "bold" }}
       >
-        {formatDate(publishedAt)}{" "}
+        {formatDate(publishDate)}{" "}
       </Typography>
 
       <Typography
@@ -48,7 +63,7 @@ const Description = ({ videoDetail }) => {
         fontWeight="bold"
         sx={{ fontSize: 15, color: "#808080" }}
       >
-        {tags?.map((tag, key) => (
+        {keywords?.map((tag, key) => (
           <span key={key}> #{tag}</span>
         ))}
       </Typography>

@@ -8,6 +8,7 @@ import {
 } from "../../../components";
 
 const Videos = ({ videos, direction }) => {
+
   if (!videos?.length) return <Loader />;
 
   return (
@@ -18,10 +19,10 @@ const Videos = ({ videos, direction }) => {
       alignItems="center"
       gap={2}
     >
-      {videos.map((item, idx) => (
+      {videos.map((video, idx) => (
         <Box key={idx}>
-          {item.id.videoId && <VideoCard video={item} />}
-          {item.id.channelId && <ChannelCard channelDetail={item} />}
+          {video.videoId && <VideoCard video={video} />}
+          {video.channelId && <ChannelCard video={video} />}
         </Box>
       ))}
     </Stack>

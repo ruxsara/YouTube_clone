@@ -7,7 +7,10 @@ import { Stack, Box, Pagination } from "@mui/material";
 
 
 const RelatedVideos = () => {
-  const [items, setItems] = useState([]);
+
+const initialValue=[]
+
+  const [items, setItems] = useState(initialValue);
   const [isLoading, setIsLoading] = useState(false);
   const [nextPageToken, setNextPageToken] = useState("");
   const { id } = useParams();
@@ -54,7 +57,7 @@ const RelatedVideos = () => {
           {items.map((item, idx) => (
             <Box key={idx}>
               {item.id.videoId && <RelatedVideoCard video={item} />}
-              {item.id.channelId && <ChannelCard channelDetail={item} />}
+              {/* {item.id.channelId && <ChannelCard channelDetail={item} />} */}
           
             </Box>
           ))}

@@ -2,8 +2,34 @@ import { Box, CardContent, CardMedia, Typography } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { demoProfilePicture } from "../../utilities/constants";
+import { formatText } from "../../utilities/formatText";
+import { formatDate } from "../../utilities/formatDate";
+import { formatCount } from "../../utilities/formatCount";
 
-const ChannelCard = ({ channelDetail }) => {
+const ChannelCard = ({ video }) => {
+  // const demoItem = {
+//   type: "video",
+//   videoId: "",
+//   title: "",
+//   channelTitle: "",
+//   channelId: "",
+//   description: "",
+//   viewCount: "19",
+//   publishedText: "13 minutes ago",
+//   lengthText: "0:20",
+//   thumbnail: [{ url: "" }],
+//   channelThumbnail: [{ url: "" }],
+// };
+
+const {
+  videoId,
+  title,
+  channelTitle,
+  channelId,
+  publishedText,
+  channelThumbnail,
+  viewCount
+} = video;
 
   return (
     <Box
@@ -21,7 +47,7 @@ const ChannelCard = ({ channelDetail }) => {
         margin: "auto",
       }}
     >
-      <Link to={`/channel/${channelDetail?.id?.channelId}`}>
+      <Link to={`/channel/${channelId}`}>
         <CardContent
           sx={{
             display: "flex",
@@ -33,10 +59,10 @@ const ChannelCard = ({ channelDetail }) => {
         >
           <CardMedia
             image={
-              channelDetail?.snippet?.thumbnails?.high?.url ||
+              channelThumbnail[0].url ||
               demoProfilePicture
             }
-            alt={channelDetail?.snippet?.title}
+            alt={channelTitle}
             sx={{
               borderRadius: "50%",
               height: "180px",
@@ -47,16 +73,13 @@ const ChannelCard = ({ channelDetail }) => {
           />
 
           <Typography variant="h6">
-            {channelDetail?.snippet?.title}
+            {channelTitle}
             <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
           </Typography>
 
-          {channelDetail?.statistics?.subscriberCount && (
+          {viewCount&& (
             <Typography>
-              {parseInt(
-                channelDetail?.statistics?.subscriberCount
-              ).toLocaleString()}{" "}
-              Subscribers
+              {formatCount(viewCount)} Subscribers
               
             </Typography>
           )}
