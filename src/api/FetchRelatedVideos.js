@@ -14,7 +14,7 @@ export const fetchRelatedVideos = async (
 
     const options = {
       params: { 
-        maxResults: 20,
+        id:id,
         pageToken: nextPageToken, 
       },
       headers: { 
@@ -22,14 +22,13 @@ export const fetchRelatedVideos = async (
         "X-RapidAPI-Host": RAPID_API_HOST,
       },
     };
+     const url='related'
 
-    const url = `search?part=snippet&relatedToVideoId=${id}&type=video`
+    const {data} = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
 
-    const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
+    setItems((prevItems) => [...prevItems, ...data.data]);
 
-    setItems((prevItems) => [...prevItems, ...response.data.items]);
-
-    setNextPageToken(response.data.nextPageToken);
+    setNextPageToken(data.continuation);
   } catch (error) {
     console.log(error);
   } finally {

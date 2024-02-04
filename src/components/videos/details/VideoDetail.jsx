@@ -15,7 +15,7 @@ const VideoDetail = () => {
       <VideoPlayer/>
     </Grid>
     <Grid item={true} xs={12} md={4} >
-      {/* <RelatedVideos/> */}
+      <RelatedVideos/>
     </Grid>
    
   </Grid>

@@ -5,10 +5,21 @@ import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Stack, Box, Pagination } from "@mui/material";
 
-
 const RelatedVideos = () => {
-
-const initialValue=[]
+  const initialValue = [
+    // {
+    //   type: "",
+    //   videoId: "",
+    //   title: "",
+    //   lengthText: "",
+    //   viewCount: "",
+    //   thumbnail:[ {url:''}],
+    //   authorThumbnail:[{url:''}],
+    //   publishedTimeText: "",
+    //   channelTitle: "",
+    //   channelId: "",
+    // },
+  ];
 
   const [items, setItems] = useState(initialValue);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +43,7 @@ const initialValue=[]
   return (
     <Box
       px={2}
-      py={{ md: 1, xs: 5 }}  
+      py={{ md: 1, xs: 5 }}
       justifyContent="center"
       alignItems="center"
     >
@@ -44,7 +55,7 @@ const initialValue=[]
         gap={2}
         id="parentScrollRelatedVideosDiv"
         style={{
-          height: "90vh"
+          height: "90vh",
         }}
       >
         <InfiniteScroll
@@ -56,9 +67,7 @@ const initialValue=[]
         >
           {items.map((item, idx) => (
             <Box key={idx}>
-              {item.id.videoId && <RelatedVideoCard video={item} />}
-              {/* {item.id.channelId && <ChannelCard channelDetail={item} />} */}
-          
+              {item.videoId && <RelatedVideoCard video={item} />}
             </Box>
           ))}
         </InfiniteScroll>

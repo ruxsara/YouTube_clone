@@ -47,7 +47,6 @@ const Comments = () => {
     const action = commentActions.find(
       (action) => action.commentId == commentId
     );
-    console.log({ commentId, action });
 
     return action;
   };
