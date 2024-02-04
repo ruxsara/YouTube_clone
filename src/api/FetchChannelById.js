@@ -13,8 +13,6 @@ export const fetchChannelById = async (channelId, setChannelDetail) => {
 
   const url = `channels?part=snippet&id=${channelId}`;
 
-  console.log(url)
-   
   const { data } = await axios.get(`${BASE_URL}/${url}`, options);
 
   setChannelDetail(data.items[0]);
