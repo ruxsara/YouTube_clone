@@ -18,7 +18,7 @@ const SearchBar = () => {
 
   return (
     <Grid container 
-    sx={{width:'600px'}}
+    sx={{width:'700px'}}
    
     >
       <Paper

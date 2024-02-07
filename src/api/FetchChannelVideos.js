@@ -11,23 +11,24 @@ export const fetchChannelVideos = async (
     setIsLoading(true);
 
     const options = {
-      params: {
-        maxResults: 6,
-        pageToken: nextPageToken
-      },
+      url: 'https://youtube-v3-alternative.p.rapidapi.com/channel',
+  params: {
+    id: channelId
+  },
       headers: {
         "X-RapidAPI-Key": RAPID_API_KEY,
         "X-RapidAPI-Host": RAPID_API_HOST
       }
     };
+    const url_u= '/channel';
 
     const url = `search?channelId=${channelId}&part=snippet%2Cid&order=date`;
 
-    const response = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
+    const {data} = await axios.get(`${RAPID_API_BASE_URL}/${url}`, options);
 
-    setVideos((prevItems) => [...prevItems, ...response.data.items]);
+    setVideos((prevItems) => [...prevItems, ...data.items]);
 
-    setNextPageToken(response.data.nextPageToken);
+    setNextPageToken(data.continuation);
   } catch (error) {
     console.log(error);
   } finally {

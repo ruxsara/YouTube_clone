@@ -2,6 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Sidebar, TagsCarousel, Videos } from "..";
 import { fetchData } from "../../api/FetchVideos";
+import { useLocation } from "react-router-dom";
+import { defaultTag } from "../../utilities/constants";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
@@ -9,13 +11,19 @@ const Feed = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [nextPageToken, setNextPageToken] = useState("");
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedTag = queryParams.get("tag_value");
+
   useEffect(() => {
+    setNextPageToken("");
+    setVideos([]);
     getMore();
-  }, [selectedCategory]);
+  }, [selectedTag]);
 
   const getMore = () => {
     fetchData(
-      selectedCategory,
+      selectedTag || defaultTag,
       setIsLoading,
       setVideos,
       setNextPageToken,

@@ -165,7 +165,7 @@ const Comments = () => {
         scrollableTarget="parentScrollCommentsDiv"
       > */}
           <Grid container>
-            <Grid container sx={{ pt: 3 }}>
+            <Grid container sx={{ pt: 3,pl:2 }}>
               <Grid>
                 <Link
                   style={{ width: "45%", marginRight: "15px" }}

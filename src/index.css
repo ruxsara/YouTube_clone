@@ -164,7 +164,7 @@ a {
   width: 100px !important;
 }
 
-.linkd {
+.tag {
   border-radius: 10px !important;
   font-weight: 800 !important;
   color: black !important;
@@ -178,7 +178,12 @@ a {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
 }
-.linkd:focus {
+.selectedTag{
+  color: white !important;
+  background-color: black !important;
+}
+
+.tag:focus {
   background-color: black !important;
   color: white !important;
 }

@@ -6,9 +6,10 @@ import {
   demoChannelTitle,
   demoChannelUrl,
   demoThumbnailUrl,
-  demoVideoUrl
+  demoVideoUrl,
 } from "../utilities/constants";
 import { formatText } from "../utilities/formatText";
+import { formatCount } from "../utilities/formatCount";
 
 // const demoItem = {
 //   type: "video",
@@ -32,13 +33,13 @@ const VideoCard = ({ video }) => {
     channelId,
     publishedText,
     thumbnail,
+    viewCount,
   } = video;
-
 
   return (
     <Card
       sx={{
-        width: { xs: "100%", sm: "358px", md: "320px" },
+        width: "368px",
         boxShadow: "none",
       }}
     >
@@ -46,22 +47,16 @@ const VideoCard = ({ video }) => {
         <CardMedia
           image={thumbnail[0].url || demoThumbnailUrl}
           alt={title}
-          sx={{ width: { xs: "100%", sm: "358px" }, height: 180 }}
+          sx={{ width: "100%", height: "207px", borderRadius: 3 }}
         />
       </Link>
       <CardContent sx={{ backgroundColor: "white", height: "106px" }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant="subtitle1" fontWeight="bold" color="#272424da">
-            {formatText(title, 50)}
+            {formatText(title, 75)}
           </Typography>
         </Link>
-        <Link
-          to={
-            channelId
-              ? `/channel/${channelId}`
-              : demoChannelUrl
-          }
-        >
+        <Link to={channelId ? `/channel/${channelId}` : demoChannelUrl}>
           <Typography variant="subtitle2" color="gray">
             {channelTitle || demoChannelTitle}
             <CheckCircleIcon
@@ -70,6 +65,7 @@ const VideoCard = ({ video }) => {
           </Typography>
 
           <Typography variant="subtitle2" color="gray">
+            {`${formatCount(viewCount)} views  • `}
             {publishedText}
           </Typography>
         </Link>

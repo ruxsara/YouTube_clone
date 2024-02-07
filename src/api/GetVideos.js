@@ -5,7 +5,7 @@ export const getAllVideos = async (url) => {
 
   const options = {
     params: {
-      maxResults: 6,
+     
     },
     headers: {
       "X-RapidAPI-Key": RAPID_API_KEY,

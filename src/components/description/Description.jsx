@@ -2,6 +2,7 @@ import { Fab, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 import { formatDate } from "../../utilities/formatDate";
+import { formatCount } from "../../utilities/formatCount";
 
 const Description = ({ videoDetail }) => {
   const [isFull, setisFull] = useState(false);
@@ -12,9 +13,9 @@ const Description = ({ videoDetail }) => {
     channelTitle,
     channelId,
     description,
-    allowRatings ,
+    allowRatings,
     viewCount,
-    isPrivate ,
+    isPrivate,
     isUnpluggedCorpus,
     isLiveContent,
     isFamilySaf,
@@ -23,7 +24,7 @@ const Description = ({ videoDetail }) => {
     publishDate,
     uploadDate,
     thumbnail,
-    keywords
+    keywords,
   } = videoDetail;
 
   const getDescription = () => {
@@ -48,14 +49,14 @@ const Description = ({ videoDetail }) => {
         component="p"
         sx={{ fontSize: 17, mr: 2, fontWeight: "bold" }}
       >
-        {" "}
-        {viewCount} views
+        
+        {formatCount(viewCount)} views
       </Typography>
       <Typography
         variant="span"
         sx={{ fontSize: 17, mr: 2, fontWeight: "bold" }}
       >
-        {formatDate(publishDate)}{" "}
+        {formatDate(publishDate)}
       </Typography>
 
       <Typography

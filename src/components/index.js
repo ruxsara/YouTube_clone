@@ -1,6 +1,6 @@
 export { default as Header } from "./header/Header";
 export { default as Feed } from "./feed/Feed";
-export { default as SearchFeed } from "./SearchFeed";
+export { default as SearchFeed } from "././search-feed/SearchFeed";
 export { default as VideoDetail } from "./videos/details/VideoDetail";
 export { default as ChannelDetail } from "./channel-details/ChannelDetail";
 export { default as SearchBar } from "./search-bar/SearchBar";
@@ -15,3 +15,6 @@ export { default as RelatedVideos } from "./related-videos/RelatedVideos";
 export { default as RelatedVideoCard } from "./related-video-card/RelatedVideoCard";
 export { default as VideoPlayerActions } from "./video-player-actions/VideoPlayerActions";
 export { default as TagsCarousel } from "./tags-carousel/TagsCarousel";
+export { default as SearchVideos } from "./search-videos/SearchVideos";
+export { default as SearchVideoCard } from "./search-video-card/SearchVideoCard";
+

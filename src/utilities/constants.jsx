@@ -12,6 +12,7 @@ import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined
 import ElectricBoltTwoToneIcon from "@mui/icons-material/ElectricBoltTwoTone";
 
 export const BASE = 'youtube-clone'
+export const defaultTag= "All"
 
 export const categories = [
   { name: "Home", icon: <HomeOutlinedIcon /> },

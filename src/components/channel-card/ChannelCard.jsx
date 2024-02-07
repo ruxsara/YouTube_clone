@@ -8,28 +8,28 @@ import { formatCount } from "../../utilities/formatCount";
 
 const ChannelCard = ({ video }) => {
   // const demoItem = {
-//   type: "video",
-//   videoId: "",
-//   title: "",
-//   channelTitle: "",
-//   channelId: "",
-//   description: "",
-//   viewCount: "19",
-//   publishedText: "13 minutes ago",
-//   lengthText: "0:20",
-//   thumbnail: [{ url: "" }],
-//   channelThumbnail: [{ url: "" }],
-// };
+  //   type: "video",
+  //   videoId: "",
+  //   title: "",
+  //   channelTitle: "",
+  //   channelId: "",
+  //   description: "",
+  //   viewCount: "19",
+  //   publishedText: "13 minutes ago",
+  //   lengthText: "0:20",
+  //   thumbnail: [{ url: "" }],
+  //   channelThumbnail: [{ url: "" }],
+  // };
 
-const {
-  videoId,
-  title,
-  channelTitle,
-  channelId,
-  publishedText,
-  channelThumbnail,
-  viewCount
-} = video;
+  const {
+    videoId,
+    title,
+    channelTitle,
+    channelId,
+    publishedText,
+    channelThumbnail,
+    viewCount,
+  } = video;
 
   return (
     <Box
@@ -58,10 +58,7 @@ const {
           }}
         >
           <CardMedia
-            image={
-              channelThumbnail[0].url ||
-              demoProfilePicture
-            }
+            image={channelThumbnail[0].url || demoProfilePicture}
             alt={channelTitle}
             sx={{
               borderRadius: "50%",
@@ -77,11 +74,8 @@ const {
             <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
           </Typography>
 
-          {viewCount&& (
-            <Typography>
-              {formatCount(viewCount)} Subscribers
-              
-            </Typography>
+          {viewCount && (
+            <Typography>{formatCount(viewCount)} Subscribers</Typography>
           )}
         </CardContent>
       </Link>

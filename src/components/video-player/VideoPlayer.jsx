@@ -13,7 +13,7 @@ const VideoPlayer = () => {
 
   
   const initialValue = {
-    id: "",
+    id: "", 
     title: "",
     lengthSeconds: "",
     channelTitle: "",
@@ -30,7 +30,9 @@ const VideoPlayer = () => {
     publishDate: "",
     uploadDate: "",
     thumbnail:[{url:''}],
-    keywords:[]
+    keywords:[],
+    isUnlisted:false,
+
   };
 
   const [videoDetail, setVideoDetail] = useState(initialValue);
@@ -43,13 +45,13 @@ const VideoPlayer = () => {
 
   return (
     <Box flex={1} pl={5}>
-      <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
-        <ReactPlayer
+      <Box sx={{ position: "sticky", top: "86px" }}>
+       <Box> <ReactPlayer 
           url={`https://www.youtube.com/watch?v=${id}`}
           className="react-player"
           controls
-          playing
-        />
+          playing 
+        /></Box>
 
         <Typography color="black" variant="h5" fontWeight="bold" p={2}>
           {videoDetail.title}

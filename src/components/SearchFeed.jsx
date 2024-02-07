@@ -3,16 +3,17 @@ import { Typography, Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Videos } from "../components";
 import { getAllVideos } from "../api/GetVideos";
+import { fetchData } from "../api/FetchVideos";
 
 const SearchFeed = () => {
   const [videos, setVideos] = useState(null);
-  const { searchTerm } = useParams();
+  const { keyword } = useParams();
 
   useEffect(() => {
-    getAllVideos(`search?part=snippet&q=${searchTerm}`).then((data) =>
-      setVideos(data.items)
+    fetchData(`search?part=snippet&q=${keyword}`).then((data) =>
+      setVideos()
     );
-  }, [searchTerm]);
+  }, [keyword]);
 
   return (
     <Grid

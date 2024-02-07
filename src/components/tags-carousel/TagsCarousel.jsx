@@ -2,15 +2,23 @@ import { Chip, Tab } from "@mui/material";
 import Box from "@mui/material/Box";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function TagsCarousel() {
-  const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
+
+  const [value, setValue] = React.useState("");
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    const tag = event.target.innerText;
+    setValue(tag);
+    navigate({
+      search: `?tag_value=${tag}`,
+    });
   };
 
-  const categories = [
+  const tags = [
     "All",
     "Music",
     "Mixes",
@@ -39,7 +47,6 @@ function TagsCarousel() {
     >
       <Tabs
         value={value}
-        onChange={handleChange}
         variant="scrollable"
         scrollButtons
         aria-label="visible arrows tabs example"
@@ -49,11 +56,11 @@ function TagsCarousel() {
           },
         }}
       >
-        {categories.map((category, index) => (
-          <Tab  
-            className="linkd"
+        {tags.map((tag, index) => (
+          <Tab
+            className={tag === value ? `tag  selectedTag` : "tag"}
             key={index}
-            label={category}
+            label={tag}
             onClick={handleChange}
           />
         ))}

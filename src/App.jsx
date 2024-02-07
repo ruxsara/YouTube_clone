@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 
 const App = () => (
   <BrowserRouter>
-    <Box sx={{ m: 2 }}>
+    <Box sx={{ ml: 2 }}>
       <Header />
       <Routes>
         <Route exact path={`/${BASE}`} element={<Feed />} />

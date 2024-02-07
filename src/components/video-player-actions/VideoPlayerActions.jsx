@@ -24,7 +24,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
   lengthSeconds,
   channelTitle,
   channelId,
-  Description,
+  description,
   allowRatings ,
   viewCount,
   isPrivate ,
@@ -53,7 +53,7 @@ const VideoPlayerActions = ({ videoDetail }) => {
       >
         {/* //image */}
 
-        <Grid item sx={{ mr: 1 }}>
+        <Grid item sx={{ mr: 1,pl: 2 }}>
           <Link to={`/channel/${channelId}`}>
             <CardMedia
               image={thumbnail[0]?.url || demoProfilePicture}
